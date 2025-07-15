@@ -33,24 +33,22 @@ func main() {
 
 	}
 	map_data := strings.Split(string(bytes_raw[:len(bytes_raw)-1]), "\n")
-	var lbguard LabGuard
+	var g LabGuard
 	nwp := new([][]rune)
 	for _, line := range map_data {
 		tmp := []rune(line)
 		*nwp = append(*nwp, tmp)
 	}
-	GetGuardPos(nwp, &lbguard)
-	//fmt.Println("starting dir LabGuard.dir==", string(lbguard.dir))
-	//fmt.Println("starting position LabGuard.pos.x==", lbguard.pos.x)
-	//fmt.Println("starting position LabGuard.pos.y==", lbguard.pos.y)
+	GetGuardPos(nwp, &g)
+	Part1(nwp, &g)
 
-	fmt.Println("----------------------------------")
-	fmt.Printf("the Guard visited %d distinct position\n", GuardPath(nwp, &lbguard))
-	fmt.Println("----------------------------------")
-	//for _, line := range *nwp {
-	//	fmt.Println(string(line))
-	//}
+}
 
+func Part1(nwp *[][]rune, g *LabGuard) {
+	fmt.Println("Part1:")
+	fmt.Println("----------------------------------")
+	fmt.Printf("the Guard visited %d distinct position\n", GuardPath(nwp, g))
+	fmt.Println("----------------------------------")
 }
 
 func GuardPath(nwp *[][]rune, g *LabGuard) int {
